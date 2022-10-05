@@ -1,0 +1,11 @@
+@import "../App.css";
+
+.game-list p {
+    padding: 1rem;
+    color: var(--grey);
+    font-weight: bold;
+}
+
+.game-list {
+    background-color: var(--light-grey);
+}

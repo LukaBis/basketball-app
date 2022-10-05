@@ -1,0 +1,49 @@
+@import "../App.css";
+
+.game {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    margin: 1rem;
+    padding: 2rem;
+    border-radius: 8px;
+    justify-content: space-between;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.game .team {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
+    text-align: center;
+}
+
+.game .team .team-name {
+    color: black;
+    height: 3rem;
+    margin-top: 1rem;
+}
+
+.game .team .score {
+    color: var(--green);
+    font-size: 2rem;
+    margin: 0;
+    margin-top: auto;
+}
+
+.game .team img {
+    height: 5rem;
+}
+
+.game .status {
+    width: 30%;
+    text-align: center;
+}
+
+.game .status p {
+    font-weight: 400;
+    padding: 0.5rem;
+    margin: 0;
+    height: 3rem;
+}

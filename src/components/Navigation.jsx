@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Typography } from '@mui/material';
-import '../css/navigation.css';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import HomeIcon from '@mui/icons-material/Home';
 import ArticleIcon from '@mui/icons-material/Article';
 import SearchIcon from '@mui/icons-material/Search';
 import DetailsIcon from '@mui/icons-material/Details';
+import '../css/navigation.css';
 
 function Navigation() {
 
