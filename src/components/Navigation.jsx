@@ -1,84 +1,126 @@
-import React, { useState, useEffect } from 'react';
-import { Typography } from '@mui/material';
-import FilterListIcon from '@mui/icons-material/FilterList';
-import HomeIcon from '@mui/icons-material/Home';
-import ArticleIcon from '@mui/icons-material/Article';
-import SearchIcon from '@mui/icons-material/Search';
-import DetailsIcon from '@mui/icons-material/Details';
-import '../css/navigation.css';
+import * as React from 'react';
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import Menu from '@mui/material/Menu';
+import MenuIcon from '@mui/icons-material/Menu';
+import Container from '@mui/material/Container';
+import Avatar from '@mui/material/Avatar';
+import Button from '@mui/material/Button';
+import Tooltip from '@mui/material/Tooltip';
+import MenuItem from '@mui/material/MenuItem';
+import SportsBasketballIcon from '@mui/icons-material/SportsBasketball';
+import '../css/Navigation.css';
 
-function Navigation() {
+const pages = ['Home', 'News', 'Search', 'Details'];
 
-    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+const ResponsiveAppBar = () => {
+  const [anchorElNav, setAnchorElNav] = React.useState(null);
 
-    const detectWidth = () => {
-        setWindowWidth(window.innerWidth);
-    }
+  const handleOpenNavMenu = (event) => {
+    setAnchorElNav(event.currentTarget);
+  };
 
-    useEffect(() => {
-        window.addEventListener('resize', detectWidth);
+  const handleCloseNavMenu = () => {
+    setAnchorElNav(null);
+  };
 
-        return () => {
-            window.removeEventListener('resize', detectWidth)
-        }
-    }, [windowWidth])
+  return (
+    <AppBar position='relative' className='navigation'>
+      <Container maxWidth="xl">
+        <Toolbar disableGutters>
+          <SportsBasketballIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+          <Typography
+            variant="h6"
+            noWrap
+            component="a"
+            href="/"
+            sx={{
+              mr: 2,
+              display: { xs: 'none', md: 'flex' },
+              fontFamily: 'monospace',
+              fontWeight: 700,
+              letterSpacing: '.3rem',
+              color: 'inherit',
+              textDecoration: 'none',
+            }}
+          >
+            BBALL
+          </Typography>
 
-    return (
-        <>
-            <div className="navigation-top">
-                <Typography 
-                    className='logo'
-                    variant='h3'>
-                    <span>B</span>Ball
-                </Typography>
+          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+            <IconButton
+              size="large"
+              aria-label="account of current user"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              onClick={handleOpenNavMenu}
+              color="inherit"
+            >
+              <MenuIcon />
+            </IconButton>
+            <Menu
+              id="menu-appbar"
+              anchorEl={anchorElNav}
+              anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'left',
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'left',
+              }}
+              open={Boolean(anchorElNav)}
+              onClose={handleCloseNavMenu}
+              sx={{
+                display: { xs: 'block', md: 'none' },
+              }}
+            >
+              {pages.map((page) => (
+                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">{page}</Typography>
+                </MenuItem>
+              ))}
+            </Menu>
+          </Box>
+          <SportsBasketballIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+          <Typography
+            variant="h5"
+            noWrap
+            component="a"
+            href=""
+            sx={{
+              mr: 2,
+              display: { xs: 'flex', md: 'none' },
+              flexGrow: 1,
+              fontFamily: 'monospace',
+              fontWeight: 700,
+              letterSpacing: '.3rem',
+              color: 'inherit',
+              textDecoration: 'none',
+            }}
+          >
+            BBALL
+          </Typography>
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+            {pages.map((page) => (
+              <Button
+                key={page}
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, color: 'white', display: 'block' }}
+              >
+                {page}
+              </Button>
+            ))}
+          </Box>
 
-                { windowWidth < 730 && 
-                    <FilterListIcon className="filter-icon" />
-                }
-
-                { windowWidth >= 730 && 
-                    <ul className='desktop-nav'>
-                        <li className='active-link'>
-                            <HomeIcon />
-                            <Typography paragraph={true}>HOME</Typography>
-                        </li>
-                        <li>
-                            <ArticleIcon />
-                            <Typography paragraph={true}>NEWS</Typography>
-                        </li>
-                        <li>
-                            <SearchIcon />
-                            <Typography paragraph={true}>SEARCH</Typography>
-                        </li>
-                        <li>
-                            <DetailsIcon />
-                            <Typography paragraph={true}>DETAILS</Typography>
-                        </li>
-                    </ul>
-                }
-            </div>
-            { windowWidth < 730 &&  
-                <div className='navigation-options-mobile'>
-                    <div className='nav-option'>
-                        <HomeIcon />
-                        <Typography paragraph={true}>HOME</Typography>
-                    </div>
-                    <div className='nav-option'>
-                        <ArticleIcon />
-                        <Typography paragraph={true}>NEWS</Typography>
-                    </div>
-                    <div className='nav-option'>
-                        <SearchIcon />
-                        <Typography paragraph={true}>SEARCH</Typography>
-                    </div>
-                    <div className='nav-option'>
-                        <DetailsIcon />
-                        <Typography paragraph={true}>DETAILS</Typography>
-                    </div>
-                </div>
-            }
-        </>
-  )
-}
-
-export default Navigation;
+          
+        </Toolbar>
+      </Container>
+    </AppBar>
+  );
+};
+export default ResponsiveAppBar;

@@ -8,7 +8,6 @@
     padding: 2rem;
     border-radius: 8px;
     justify-content: space-between;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .game .team {
@@ -37,7 +36,7 @@
 }
 
 .game .status {
-    width: 30%;
+    width: 35%;
     text-align: center;
 }
 
