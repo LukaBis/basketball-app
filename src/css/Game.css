@@ -32,7 +32,7 @@
 }
 
 .game .team img {
-    height: 5rem;
+    width: 5rem;
 }
 
 .game .status {

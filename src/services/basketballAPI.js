@@ -1,8 +1,8 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 const basketballApiHeaders = {
-    'X-RapidAPI-Key': '39ba07e41amshb16248619eb9687p1f871ejsn0e262c85f89e',
-    'X-RapidAPI-Host': 'api-basketball.p.rapidapi.com'
+    'X-RapidAPI-Key': process.env.REACT_APP_BASKETBALL_API_KEY,
+    'X-RapidAPI-Host': process.env.REACT_APP_BASKETBALL_API_HOST
 };
 
 const createRequest = (url) => ({ url, headers: basketballApiHeaders });
@@ -17,7 +17,7 @@ today = yyyy + '-' + mm + '-' + dd;
 export const basketballApi = createApi({
     reducerPath: 'basketballApi',
     baseQuery: fetchBaseQuery({
-        baseUrl: 'https://api-basketball.p.rapidapi.com/'
+        baseUrl: process.env.REACT_APP_BASKETBALL_API_URL
     }),
     endpoints: (builder) => ({
         getGames: builder.query({
